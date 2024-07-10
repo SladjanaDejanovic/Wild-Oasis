@@ -2,15 +2,11 @@ import styled from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
+import Heading from "./ui/Heading";
 
 // style components return react component (that's why naming with capital letter)
 // this css is only scoped to this component, which eliminates all problems of global css
 //styling html element
-const H1 = styled.h1`
-	font-size: 30px;
-	font-weight: 600;
-`;
-
 const StyledApp = styled.div`
 	background-color: orangered;
 	padding: 20px;
@@ -21,9 +17,13 @@ function App() {
 		<>
 			<GlobalStyles />
 			<StyledApp>
-				<H1>The Wild Oasis</H1>
+				<Heading as="h1">The Wild Oasis</Heading>
+
+				<Heading as="h2">Check in and out</Heading>
 				<Button onClick={() => alert("Check in")}>Check in</Button>
 				<Button onClick={() => alert("Check out")}>Check out</Button>
+
+				<Heading as="h3">Form</Heading>
 				<Input type="number" placeholder="Number of guests" />
 				<Input type="number" placeholder="Number of guests" />
 			</StyledApp>
