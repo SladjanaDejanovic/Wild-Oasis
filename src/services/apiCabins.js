@@ -11,21 +11,33 @@ export async function getCabins() {
 	return data;
 }
 
-export async function createCabin(newCabin) {
-	//https://wycjbzjtochxxulzwehw.supabase.co/storage/v1/object/public/cabin-images/cabin_001.jpg
+export async function createEditCabin(newCabin, id) {
+	console.log(newCabin, id);
+	const hasImagePath = newCabin.image?.startsWith?.(supabaseUrl);
 
 	//if there are  slashes in cabin name, supabase will create folders based on that, to avoid that we replace / with nothing
 	const imageName = `${Math.random()}-${
 		newCabin.image.name
 	}`.replaceAll("/", "");
 
-	const imagePath = `${supabaseUrl}/storage/v1/object/public/cabin-images/${imageName}`;
+	const imagePath = hasImagePath
+		? newCabin.image
+		: `${supabaseUrl}/storage/v1/object/public/cabin-images/${imageName}`;
 
-	//1. create cabin
-	const { data, error } = await supabase
-		.from("cabins")
-		.insert([{ ...newCabin, image: imagePath }])
-		.select();
+	//1. Create/edit cabin
+	let query = supabase.from("cabins");
+
+	// CREATE
+	if (!id) query = query.insert([{ ...newCabin, image: imagePath }]);
+
+	// EDIT
+	if (id)
+		query = query
+			.update({ ...newCabin, image: imagePath })
+			.eq("id", id)
+			.select();
+
+	const { data, error } = await query.select().single();
 
 	if (error) {
 		console.error(error);
@@ -33,15 +45,6 @@ export async function createCabin(newCabin) {
 	}
 
 	//2. upload image
-
-	// // Create Supabase client
-	// const supabase = createClient(
-	// 	"your_project_url",
-	// 	"your_supabase_api_key"
-	// );
-
-	// Upload file using standard upload
-	// async function uploadFile(file) {}
 	const { error: storageError } = await supabase.storage
 		.from("cabin-images")
 		.upload(imageName, newCabin.image);
