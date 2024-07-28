@@ -37,7 +37,7 @@ function CabinTableOperations() {
 					},
 					{
 						value: "maxCapacity-desc",
-						label: "Sort by capacity (hifh first)",
+						label: "Sort by capacity (high first)",
 					},
 				]}
 			/>
