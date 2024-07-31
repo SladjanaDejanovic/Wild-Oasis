@@ -10,7 +10,7 @@ export function useBooking() {
 		data: booking,
 		error,
 	} = useQuery({
-		queryKey: ["bookking"],
+		queryKey: ["booking", bookingId],
 		queryFn: () => getBooking(bookingId),
 		retry: false, //react query by default tries to fetch data 3 times in case if failed in the beginning, so in some cases that doesn't make much sense, like here, if it failed means there's no data
 	});
