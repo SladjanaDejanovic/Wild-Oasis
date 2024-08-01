@@ -43,6 +43,8 @@ function Filter({ filterField, options }) {
 	function handleClick(value) {
 		// first name of the state (of the field in URL), second is value itself
 		searchParams.set(filterField, value);
+		if (searchParams.get("page")) searchParams.set("page", 1);
+
 		setSearchParams(searchParams);
 	}
 
