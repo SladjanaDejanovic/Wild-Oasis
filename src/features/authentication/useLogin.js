@@ -15,7 +15,7 @@ export function useLogin() {
 			// to manually set some data into react query cache
 			queryClient.setQueryData(["user"], data.user);
 			toast.success("Login successful");
-			navigate("/dashboard");
+			navigate("/dashboard", { replace: true });
 		},
 
 		onError: (err) => {
