@@ -31,11 +31,9 @@ const StyledToggle = styled.button`
 
 const StyledList = styled.ul`
 	position: fixed;
-
 	background-color: var(--color-grey-0);
 	box-shadow: var(--shadow-md);
 	border-radius: var(--border-radius-md);
-
 	right: ${(props) => props.position.x}px;
 	top: ${(props) => props.position.y}px;
 `;
@@ -48,7 +46,6 @@ const StyledButton = styled.button`
 	padding: 1.2rem 2.4rem;
 	font-size: 1.4rem;
 	transition: all 0.2s;
-
 	display: flex;
 	align-items: center;
 	gap: 1.6rem;
@@ -88,6 +85,8 @@ function Toggle({ id }) {
 		useContext(MenusContext);
 
 	function handleClick(e) {
+		e.stopPropagation();
+
 		const rect = e.target.closest("button").getBoundingClientRect();
 		setPosition({
 			x: window.innerWidth - rect.width - rect.x,
@@ -107,7 +106,7 @@ function Toggle({ id }) {
 
 function List({ id, children }) {
 	const { openId, position, close } = useContext(MenusContext);
-	const ref = useOutsideClick(close);
+	const ref = useOutsideClick(close, false);
 
 	if (openId !== id) return null;
 
