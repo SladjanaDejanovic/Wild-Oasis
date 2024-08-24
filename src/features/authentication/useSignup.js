@@ -8,7 +8,7 @@ export function useSignup() {
 			signupApi({ fullName, email, password }),
 
 		onSuccess: (user) => {
-			// console.log(user);
+			console.log(user);
 			toast.success(
 				"Account successful created! Please verify the new account from the user's email address."
 			);

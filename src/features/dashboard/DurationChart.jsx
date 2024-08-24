@@ -9,7 +9,7 @@ import {
 	Tooltip,
 } from "recharts";
 import { useDarkMode } from "../../context/DarkModeContext";
-import { BsDatabaseAdd } from "react-icons/bs";
+// import { BsDatabaseAdd } from "react-icons/bs";
 
 const ChartBox = styled.div`
 	/* Box */
