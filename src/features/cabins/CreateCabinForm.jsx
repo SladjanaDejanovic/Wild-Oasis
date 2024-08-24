@@ -25,7 +25,7 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
 	const { isEditing, editCabin } = useEditCabin();
 
 	const isWorking = isCreating || isEditing;
-
+	/* eslint-disable no-unused-vars */
 	function onSubmit(data) {
 		const image =
 			typeof data.image === "string" ? data.image : data.image[0];
@@ -34,7 +34,9 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
 			editCabin(
 				{ newCabinData: { ...data, image }, id: editId },
 				{
-					onSuccess: (data) => reset(),
+					onSuccess: (data) => {
+						reset(), onCloseModal?.();
+					},
 				}
 			);
 		else
@@ -48,7 +50,7 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
 				}
 			);
 	}
-
+	/* eslint-disable no-unused-vars */
 	function onError(errors) {
 		console.log(errors);
 	}

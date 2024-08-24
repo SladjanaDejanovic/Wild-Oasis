@@ -28,7 +28,7 @@ function ProtectedRoute({ children }) {
 		[isAuthenticated, isLoading, navigate, isFetching]
 	);
 
-	//3. While loading, show spinenr
+	//3. While loading, show spinner
 	if (isLoading)
 		return (
 			<FullPage>
