@@ -12,7 +12,6 @@ export function useLogin() {
 			loginApi({ email, password }),
 
 		onSuccess: (data) => {
-			// console.log(user);
 			// to manually set some data into react query cache
 			queryClient.setQueryData(["user"], data.user);
 			toast.success("Login successful");
