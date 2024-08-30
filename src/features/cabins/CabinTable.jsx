@@ -18,8 +18,7 @@ import Empty from "../../ui/Empty";
 // 	text-transform: uppercase;
 // 	letter-spacing: 0.4px;
 // 	font-weight: 600;
-// 	color: var(--color-grey-600);
-// 	padding: 1.6rem 2.4rem;
+
 // `;
 
 function CabinTable() {
@@ -30,7 +29,7 @@ function CabinTable() {
 	if (!cabins.length) return <Empty resourceName="cabins" />;
 
 	// FILTER
-	// setting "all" as default when we first cisit page
+	// setting "all" as default when we first visit page
 	const filterValue = searchParams.get("discount") || "all";
 
 	let filteredCabins;
