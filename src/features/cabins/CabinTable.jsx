@@ -14,9 +14,6 @@ import Empty from "../../ui/Empty";
 // 	border-bottom: 1px solid var(--color-grey-100);
 // 	text-transform: uppercase;
 // 	letter-spacing: 0.4px;
-// 	font-weight: 600;
-
-// `;
 
 function CabinTable() {
 	const { isLoading, cabins } = useCabins();
