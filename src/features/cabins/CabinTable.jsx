@@ -9,7 +9,6 @@ import Empty from "../../ui/Empty";
 
 // const TableHeader = styled.header`
 // 	grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 
-// 	background-color: var(--color-grey-50);
 
 
 function CabinTable() {
