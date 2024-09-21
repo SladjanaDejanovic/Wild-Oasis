@@ -7,7 +7,6 @@ import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
 import Empty from "../../ui/Empty";
 
-// const TableHeader = styled.header`
 
 function CabinTable() {
 	const { isLoading, cabins } = useCabins();
